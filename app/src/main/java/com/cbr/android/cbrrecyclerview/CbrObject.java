@@ -2,42 +2,42 @@ package com.cbr.android.cbrrecyclerview;
 
 public class CbrObject{
 
-    private String Name;
-    private int Id;
-    private boolean Working;
+    private String name;
+    private int id;
+    private boolean isWorking;
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public CbrObject(String name,int id){
-        this.Name = name;
-        this.Id = id;
+        this.name = name;
+        this.id = id;
     }
 
-    public CbrObject(String name,int id,boolean working){
-        this.Name = name;
-        this.Id = id;
-        this.Working = working;
+    public CbrObject(String name,int id,boolean isWorking){
+        this.name = name;
+        this.id = id;
+        this.isWorking = isWorking;
     }
 
     public boolean isWorking() {
-        return Working;
+        return isWorking;
     }
 
     public void setWorking(boolean working) {
-        Working = working;
+        isWorking = working;
     }
 }

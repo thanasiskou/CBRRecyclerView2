@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.CbrDetailView"/>
+        <activity android:name=".views.CbrDetailActivity"/>
     </application>
 
 </manifest>

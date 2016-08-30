@@ -15,14 +15,14 @@ public class CbrDetailActivity extends AppCompatActivity{
     private static final String EXTRA_CBR_ID = "com.cbr.android.cbrrecyclerview2.extra_cbr_id";
     private static final String EXTRA_CBR_WORKING = "com.cbr.android.cbrrecyclerview2.extra_cbr_working";
 
-    private String Name;
-    private TextView ShowName;
+    private String name;
+    private TextView showNameTextView;
 
-    private int Id;
-    private TextView ShowId;
+    private int id;
+    private TextView showIdTextView;
 
-    private boolean Working;
-    private CheckBox ShowWorking;
+    private boolean isWorking;
+    private CheckBox showIsWorking;
 
     public static Intent newIntent(Context packageContext, String name, int id, boolean working){
         Intent i = new Intent(packageContext,CbrDetailActivity.class);
@@ -45,18 +45,18 @@ public class CbrDetailActivity extends AppCompatActivity{
         super.onCreate(savedInstance);
         setContentView(R.layout.cbr_detail);
 
-        Name = getIntent().getStringExtra(EXTRA_CBR_NAME);
-        Id = getIntent().getIntExtra(EXTRA_CBR_ID,0);
-        Working = getIntent().getBooleanExtra(EXTRA_CBR_WORKING,false);
+        name = getIntent().getStringExtra(EXTRA_CBR_NAME);
+        id = getIntent().getIntExtra(EXTRA_CBR_ID,0);
+        isWorking = getIntent().getBooleanExtra(EXTRA_CBR_WORKING,false);
 
-        ShowName = (TextView) findViewById(R.id.view_cbr_detail_name);
-        ShowName.setText(Name);
+        showNameTextView = (TextView) findViewById(R.id.view_cbr_detail_name);
+        showNameTextView.setText(name);
 
-        ShowId = (TextView) findViewById(R.id.view_cbr_detail_id);
-        ShowId.setText(String.valueOf(Id));
+        showIdTextView = (TextView) findViewById(R.id.view_cbr_detail_id);
+        showIdTextView.setText(String.valueOf(id));
 
-        ShowWorking = (CheckBox) findViewById(R.id.view_cbr_detail_checkbox);
-        ShowWorking.setChecked(Working);
+        showIsWorking = (CheckBox) findViewById(R.id.view_cbr_detail_checkbox);
+        showIsWorking.setChecked(isWorking);
 
 
     }

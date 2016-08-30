@@ -1,4 +1,4 @@
-package com.cbr.android.cbrrecyclerview.Adapters;
+package com.cbr.android.cbrrecyclerview.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.cbr.android.cbrrecyclerview.CbrObject;
 import com.cbr.android.cbrrecyclerview.R;
-import com.cbr.android.cbrrecyclerview.Views.CbrViewHolder;
+import com.cbr.android.cbrrecyclerview.views.CbrViewHolder;
 
 import java.util.ArrayList;
 

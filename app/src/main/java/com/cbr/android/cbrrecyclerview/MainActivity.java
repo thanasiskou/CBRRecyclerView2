@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<CbrObject> generateCBRs() {
         ArrayList<CbrObject> list = new ArrayList<>();
+        list = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
             list.add(new CbrObject("CBR #"+i,i,(i%2==1)?true:false));
         }
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.activity_main_recyclerview);
 
         CbrAdapter cbrAdapter = new CbrAdapter(generateCBRs());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(cbrAdapter);
     }

@@ -1,6 +1,6 @@
 package com.cbr.android.cbrrecyclerview;
 
-public class CbrObject {
+public class CbrObject{
 
     private String Name;
     private int Id;

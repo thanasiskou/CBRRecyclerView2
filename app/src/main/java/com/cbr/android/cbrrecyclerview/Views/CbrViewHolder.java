@@ -2,6 +2,8 @@ package com.cbr.android.cbrrecyclerview.Views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
@@ -9,9 +11,13 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cbr.android.cbrrecyclerview.Adapters.CbrAdapter;
 import com.cbr.android.cbrrecyclerview.CbrObject;
 import com.cbr.android.cbrrecyclerview.MainActivity;
 import com.cbr.android.cbrrecyclerview.R;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener*/{
 
@@ -31,11 +37,12 @@ public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnC
     }
 
 
-    public void bindData(CbrObject object){
+    public void bindData(final CbrObject object){
         final CbrObject CbrObject = object;
-        NameTextView.setText(object.getName());
-        IdTextView.setText(String.valueOf(object.getId()));
-        WorkingCheckBox.setChecked(object.isWorking());
+        NameTextView.setText(CbrObject.getName());
+        IdTextView.setText(String.valueOf(CbrObject.getId()));
+        WorkingCheckBox.setChecked(CbrObject.isWorking());
+        WorkingCheckBox.setEnabled(true);
         WorkingCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -43,12 +50,19 @@ public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnC
                 Toast.makeText(itemView.getContext(),CbrObject.getName() + " working: " + CbrObject.isWorking(),Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
-    /*
-    @Override
-    public void onClick(View itemView){
-        Toast.makeText(itemView.getContext(),"Name " + NameTextView.getText(),Toast.LENGTH_SHORT).show();
-    }*/
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(v.getContext(),"Clicked " + CbrObject.getName(),Toast.LENGTH_SHORT).show();
+                String name = CbrObject.getName();
+                int id = CbrObject.getId();
+                boolean working = CbrObject.isWorking();
+                Intent i = CbrDetailView.newIntent(v.getContext(),name,id,working);
+                //v.getContext().startActivity(i);//?????????????
+                startActivity(i);
+            }
+        });
+    }
 
 }

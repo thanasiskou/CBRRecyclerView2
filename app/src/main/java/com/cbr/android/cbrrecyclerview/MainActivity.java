@@ -11,7 +11,6 @@ import com.cbr.android.cbrrecyclerview.adapters.CbrAdapter;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity {
 
 	private RecyclerView mRecyclerView;

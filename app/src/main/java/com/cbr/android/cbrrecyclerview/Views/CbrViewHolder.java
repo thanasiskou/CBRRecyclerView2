@@ -59,8 +59,8 @@ public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnC
                 int id = CbrObject.getId();
                 boolean working = CbrObject.isWorking();
                 Intent i = CbrDetailView.newIntent(v.getContext(),name,id,working);
-                //v.getContext().startActivity(i);//?????????????
-                startActivity(i);
+                v.getContext().startActivity(i);//?????????????
+                //startActivity(i);
             }
         });
     }

@@ -55,7 +55,7 @@ public class CbrDetailView extends AppCompatActivity{
         ShowName.setText(Name);
 
         ShowId = (TextView) findViewById(R.id.view_cbr_detail_id);
-        ShowId.setText(Id);
+        ShowId.setText(String.valueOf(Id));
 
         ShowWorking = (CheckBox) findViewById(R.id.view_cbr_detail_checkbox);
         ShowWorking.setChecked(Working);

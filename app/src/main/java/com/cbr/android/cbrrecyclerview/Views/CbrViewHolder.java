@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.cbr.android.cbrrecyclerview.CbrObject;
 import com.cbr.android.cbrrecyclerview.R;
+import com.cbr.android.cbrrecyclerview.activities.CbrDetailActivity;
 
 public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnClickListener*/ {
 

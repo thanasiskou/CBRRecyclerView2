@@ -1,4 +1,4 @@
-package com.cbr.android.cbrrecyclerview.views;
+package com.cbr.android.cbrrecyclerview.activities;
 
 import android.content.Context;
 import android.content.Intent;

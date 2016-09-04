@@ -1,6 +1,8 @@
 package com.cbr.android.cbrrecyclerview;
 
-public class CbrObject{
+import java.io.Serializable;
+
+public class CbrObject implements Serializable{
 
     private String name;
     private int id;

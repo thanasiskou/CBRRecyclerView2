@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cbr.android.cbrrecyclerview.CbrObject;
+import com.cbr.android.cbrrecyclerview.Interfaces.ListListener;
 import com.cbr.android.cbrrecyclerview.R;
 import com.cbr.android.cbrrecyclerview.views.CbrViewHolder;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class CbrAdapter extends RecyclerView.Adapter<CbrViewHolder> {
 
     private ArrayList<CbrObject> items;
+    private ListListener mListListener; //me auto o adapter milaei me to activity
 
     @Override
     public CbrViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -24,8 +26,14 @@ public class CbrAdapter extends RecyclerView.Adapter<CbrViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CbrViewHolder holder, int position) {
+    public void onBindViewHolder(CbrViewHolder holder, final int position) {
         holder.bindData(items.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListListener.onItemClicked(items.get(position));
+            }
+        });
     }
 
     @Override
@@ -37,7 +45,8 @@ public class CbrAdapter extends RecyclerView.Adapter<CbrViewHolder> {
         }
     }
 
-    public CbrAdapter(ArrayList<CbrObject> list){
+    public CbrAdapter(ArrayList<CbrObject> list,ListListener listListener){//ston adapter yparxei enas listener, gia na parakolouthei an tou pernaei ena activity
         this.items = new ArrayList<CbrObject>(list);
+        this.mListListener = listListener;
     }
 }

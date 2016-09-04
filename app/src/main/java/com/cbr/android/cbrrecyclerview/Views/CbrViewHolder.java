@@ -42,6 +42,7 @@ public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnC
 			}
 		});
 
+		/*
 		itemView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -52,6 +53,7 @@ public class CbrViewHolder extends RecyclerView.ViewHolder /*implements View.OnC
 				v.getContext().startActivity(i);
 			}
 		});
+		*/
 	}
 
 }

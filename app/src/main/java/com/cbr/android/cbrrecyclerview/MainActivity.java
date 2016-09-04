@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.cbr.android.cbrrecyclerview.Interfaces.ListListener;
+import com.cbr.android.cbrrecyclerview.activities.CbrDetailActivity;
 import com.cbr.android.cbrrecyclerview.adapters.CbrAdapter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListListener {
 
 	private RecyclerView mRecyclerView;
 
@@ -38,10 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
 		mRecyclerView = (RecyclerView) findViewById(R.id.activity_main_recyclerview);
 
-		CbrAdapter cbrAdapter = new CbrAdapter(generateCBRs());
+		CbrAdapter cbrAdapter = new CbrAdapter(generateCBRs(),this);
 
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 		mRecyclerView.setAdapter(cbrAdapter);
 	}
 
+	@Override
+	public void onItemClicked(CbrObject object) {
+		Intent intent = new Intent(this, CbrDetailActivity.class);
+		intent.putExtra(CbrDetailActivity.EXTRA_CBR_OBJECT,object);
+		startActivity(intent);
+	}
 }

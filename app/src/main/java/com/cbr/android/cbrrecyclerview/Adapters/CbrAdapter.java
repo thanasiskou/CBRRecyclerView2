@@ -14,39 +14,55 @@ import java.util.ArrayList;
 
 public class CbrAdapter extends RecyclerView.Adapter<CbrViewHolder> {
 
-    private ArrayList<CbrObject> items;
-    private ListListener mListListener; //me auto o adapter milaei me to activity
+	private ArrayList<CbrObject> items;
+	private ListListener mListListener; //me auto o adapter milaei me to activity
 
-    @Override
-    public CbrViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.view_cbrobject,parent,false);
-        //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cbrobject,parent,false);//view pou dimiougeis kai view parent, epistrefei ti tha emfanistei //false, na min kanei to view attach ston parent
-        return new CbrViewHolder(view);
-    }
+	@Override
+	public CbrViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+		View view = layoutInflater.inflate(R.layout.view_cbrobject, parent, false);
+		//View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cbrobject,parent,false);//view pou dimiougeis kai view parent, epistrefei ti tha emfanistei //false, na min kanei to view attach ston parent
+		return new CbrViewHolder(view);
+	}
 
-    @Override
-    public void onBindViewHolder(CbrViewHolder holder, final int position) {
-        holder.bindData(items.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListListener.onItemClicked(items.get(position));
-            }
-        });
-    }
+	@Override
+	public void onBindViewHolder(CbrViewHolder holder, final int position) {
+		holder.bindData(items.get(position));
+		holder.itemView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mListListener.onItemClicked(items.get(position));
+			}
+		});
+	}
 
-    @Override
-    public int getItemCount() {
-        if(items != null){
-            return items.size();
-        }else{
-            return 0;
-        }
-    }
+	@Override
+	public int getItemCount() {
+		if (items != null) {
+			return items.size();
+		} else {
+			return 0;
+		}
+	}
 
-    public CbrAdapter(ArrayList<CbrObject> list,ListListener listListener){//ston adapter yparxei enas listener, gia na parakolouthei an tou pernaei ena activity
-        this.items = new ArrayList<CbrObject>(list);
-        this.mListListener = listListener;
-    }
+	public CbrAdapter(ArrayList<CbrObject> list, ListListener listListener) {//ston adapter yparxei enas listener, gia na parakolouthei an tou pernaei ena activity
+		this.items = new ArrayList<CbrObject>(list);
+		this.mListListener = listListener;
+	}
+
+	public void updateData(CbrObject object) {
+		int updateIndex = -1;
+
+		for (int i = 0; i < items.size(); i++) {
+			if (object.getId() == items.get(i).getId()) {
+				updateIndex = i;
+			}
+		}
+
+		if (updateIndex != -1) {
+			items.set(updateIndex, object);
+			notifyItemChanged(updateIndex);
+		}
+
+	}
 }

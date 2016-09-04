@@ -15,7 +15,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ListListener {
 
+	public static final int REQUEST_DETAILS = 10001;
 	private RecyclerView mRecyclerView;
+	private CbrAdapter mCbrAdapter;
 
 	private static final String EXTRA_CBR_ID = "com.cbr.android.cbrrecyclerview2.cbr_id";
 
@@ -40,16 +42,24 @@ public class MainActivity extends AppCompatActivity implements ListListener {
 
 		mRecyclerView = (RecyclerView) findViewById(R.id.activity_main_recyclerview);
 
-		CbrAdapter cbrAdapter = new CbrAdapter(generateCBRs(),this);
+		mCbrAdapter = new CbrAdapter(generateCBRs(), this);
 
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-		mRecyclerView.setAdapter(cbrAdapter);
+		mRecyclerView.setAdapter(mCbrAdapter);
 	}
 
 	@Override
 	public void onItemClicked(CbrObject object) {
 		Intent intent = new Intent(this, CbrDetailActivity.class);
-		intent.putExtra(CbrDetailActivity.EXTRA_CBR_OBJECT,object);
-		startActivity(intent);
+		intent.putExtra(CbrDetailActivity.EXTRA_CBR_OBJECT, object);
+		startActivityForResult(intent, REQUEST_DETAILS);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == RESULT_OK && requestCode == REQUEST_DETAILS) {
+			mCbrAdapter.updateData((CbrObject) data.getSerializableExtra(CbrDetailActivity.EXTRA_CBR_OBJECT));
+		}
 	}
 }
